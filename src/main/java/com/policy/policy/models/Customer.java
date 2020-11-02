@@ -1,5 +1,9 @@
 package com.policy.policy.models;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -31,7 +35,7 @@ public class Customer {
 		this.id = id;
 	}
 	
-	
+	@NotEmpty(message = "Full name is required")
 	public String getFullname() {
 		return fullname;
 	}
@@ -40,6 +44,8 @@ public class Customer {
 		this.fullname = fullname;
 	}
 
+	@NotEmpty(message = "CPF is required")
+	@CPF(message = "CPF invalid")
 	public String getCpf() {
 		return cpf;
 	}
@@ -48,6 +54,7 @@ public class Customer {
 		this.cpf = cpf;
 	}
 
+	@NotEmpty(message = "City is required")
 	public String getCity() {
 		return city;
 	}
@@ -56,6 +63,7 @@ public class Customer {
 		this.city = city;
 	}
 
+	@NotEmpty(message = "UF is required")
 	public String getUf() {
 		return uf;
 	}
