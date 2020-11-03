@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Customer {
 	
 	@Id
-	private long id;
+	private String id;
 	
 	private String fullname;
 	
@@ -26,11 +26,11 @@ public class Customer {
 		super();
 	}
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	

@@ -34,7 +34,7 @@ public class CustomerController {
 	}
 	
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<Response<Customer>> getById(@PathVariable(name = "id") Long id) {
+	public ResponseEntity<Response<Customer>> getById(@PathVariable(name = "id") String id) {
 		return ResponseEntity.ok(new Response<Customer>(this.customerService.getCustomerById(id)));
 	}
 	
@@ -50,7 +50,7 @@ public class CustomerController {
 	}
 	
 	@PutMapping(path = "/{id}")
-	public ResponseEntity<Response<Customer>> update(@PathVariable(name = "id") Long id ,@Valid @RequestBody Customer customer, BindingResult result) {
+	public ResponseEntity<Response<Customer>> update(@PathVariable(name = "id") String id ,@Valid @RequestBody Customer customer, BindingResult result) {
 		if(result.hasErrors()) {
 			List<String> erros = new ArrayList<String>();
 			result.getAllErrors().forEach(erro -> erros.add(erro.getDefaultMessage()));
@@ -62,7 +62,7 @@ public class CustomerController {
 	}
 	
 	@DeleteMapping(path = "/{id}")
-	public void remove(@PathVariable(name = "id") Long id) {
+	public void remove(@PathVariable(name = "id") String id) {
 		this.customerService.removeCustomer(id);
 	}
 	
