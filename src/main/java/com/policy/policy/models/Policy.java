@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.validation.constraints.NotEmpty;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -31,6 +33,10 @@ public class Policy {
 	@Transient
 	private boolean expired;
 	
+	public Policy() {
+		super();
+	}
+	
 	public String getNumberPolicy() {
 		return numberPolicy;
 	}
@@ -39,6 +45,7 @@ public class Policy {
 		this.numberPolicy = numberPolicy;
 	}
 	
+	@NotEmpty(message = "Start term date is required")
 	public String getStartTermDate() {
 		return startTermDate;
 	}
@@ -47,6 +54,7 @@ public class Policy {
 		this.startTermDate = startTermDate;
 	}
 	
+	@NotEmpty(message = "End term date is required")
 	public String getEndTermDate() {
 		return endTermDate;
 	}
@@ -55,6 +63,7 @@ public class Policy {
 		this.endTermDate = endTermDate;
 	}
 	
+	@NotEmpty(message = "Vehicle plate is required")
 	public String getVehiclePlate() {
 		return vehiclePlate;
 	}
@@ -63,6 +72,7 @@ public class Policy {
 		this.vehiclePlate = vehiclePlate;
 	}
 	
+	@NotEmpty(message = "Value is required")
 	public String getValuePolicy() {
 		return valuePolicy;
 	}
@@ -72,6 +82,7 @@ public class Policy {
 	}
 	
 	public long getLateDays() {
+		this.getDays();
 		return lateDays;
 	}
 	
@@ -80,11 +91,11 @@ public class Policy {
 	}
 	
 	public long getRemainingDays() {
-		this.getDays();
+		
 		return remainingDays;
 	}
 	
-	public void setRemainingDays(long remainingDays) {
+	public void setRemainingDays(int remainingDays) {
 		this.remainingDays = remainingDays;
 	}
 	
@@ -112,13 +123,13 @@ public class Policy {
 				this.expired = true;
 			}
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
-		
-				
+						
 	}
+
 
 
 	

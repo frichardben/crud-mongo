@@ -1,6 +1,6 @@
 package com.policy.policy.models;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.data.annotation.Id;
@@ -34,7 +34,7 @@ public class Customer {
 		this.id = id;
 	}
 	
-	@NotNull(message = "Full name is required")
+	@NotEmpty(message = "Full name is required")
 	public String getFullname() {
 		return fullname;
 	}
@@ -43,7 +43,7 @@ public class Customer {
 		this.fullname = fullname;
 	}
 
-	@NotNull(message = "CPF is required")
+	@NotEmpty(message = "CPF is required")
 	@CPF(message = "CPF invalid")
 	public String getCpf() {
 		return cpf;
@@ -53,7 +53,7 @@ public class Customer {
 		this.cpf = cpf;
 	}
 
-	@NotNull(message = "City is required")
+	@NotEmpty(message = "City is required")
 	public String getCity() {
 		return city;
 	}
@@ -62,7 +62,7 @@ public class Customer {
 		this.city = city;
 	}
 
-	@NotNull(message = "UF is required")
+	@NotEmpty(message = "UF is required")
 	public String getUf() {
 		return uf;
 	}
